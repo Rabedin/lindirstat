@@ -1,0 +1,1 @@
+Lindirstat readme file, todo
