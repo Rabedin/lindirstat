@@ -27,9 +27,10 @@ def check_file(file_path):
         dir_contents = os.listdir(file_path)
         print(file_path, "is a directory")
         # print(dir_contents)
-        for path in dir_contents:
-            
-            check_file(file_path)
+        for file in dir_contents:
+            current_path = file_path + file # TODO Need to test if concat'd path is correct
+            check_file(current_path)
+            print(indent, file) # TODO Need to init indent
     # Finally check if it's a file
     if os.path.isfile(file_path):
         # What to do if target is file
