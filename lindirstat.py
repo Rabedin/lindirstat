@@ -28,7 +28,10 @@ def check_file(file_path):
         print(file_path, "is a directory")
         # print(dir_contents)
         for file in dir_contents:
-            current_path = file_path + file # TODO Need to test if concat'd path is correct
+            # if directory path does not end with /, add that
+            if file_path[-1] != "/":
+                file_path = file_path + "/"
+            current_path = file_path + file
             check_file(current_path)
             print(indent, file) # TODO Need to init indent
     # Finally check if it's a file
