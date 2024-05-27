@@ -14,30 +14,27 @@ file_input = input()
 initial_file_path = file_input
 file_path = initial_file_path
 
-# Directory function
+# Function to act according to file/directory/none
 def check_file(file_path):
-    # Start by checking if the file exists
-    if os.path.exists(file_path):
-        print("file exists")
-    else:
+    # Start by flagging if the file doesn't exist
+    if os.path.exists(file_path) == False:
         print("file does not exist")
+
     # Then check if it's a directory
     if os.path.isdir(file_path):
-        # What to do if target is Directory
         dir_contents = os.listdir(file_path)
-        print(file_path, "is a directory")
-        # print(dir_contents)
+        get_file_info(file_path)
+        # if directory path does not end with /, add that
+        if file_path[-1] != "/":
+            file_path = file_path + "/"
+        # Check each file in directory
         for file in dir_contents:
-            # if directory path does not end with /, add that
-            if file_path[-1] != "/":
-                file_path = file_path + "/"
             current_path = file_path + file
             check_file(current_path)
-            print(indent, file) # TODO Need to init indent
+
     # Finally check if it's a file
     if os.path.isfile(file_path):
         # What to do if target is file
         get_file_info(file_path)
-        print(file_path, "is a file")
 
 check_file(file_path)
